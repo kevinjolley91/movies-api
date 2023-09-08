@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  get "/users/:id" => "users#show"
+  post "users" => "users#create"
+  patch "users/:id" => "users#update"
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+  post "/sessions" => "sessions#create"
+
+  get "/movies" => "movies#index"
+  get "/movies/:id" => "movies#show"
+  post "/movies" => "movies#create"
 end
+
