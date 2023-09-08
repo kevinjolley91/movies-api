@@ -3,7 +3,7 @@ class FavoritesController < ApplicationController
 
   def create
     @favorite = Favorite.new(
-      user_id = current_user,
+      # user_id = params[id: current_user.id],
       movie_id = params[:id],
     )
     if @favorite.save
