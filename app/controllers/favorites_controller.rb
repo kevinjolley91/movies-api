@@ -11,8 +11,12 @@ class FavoritesController < ApplicationController
   end
 
   def delete
-    @favorite = current_user.favorites.where(movie_id: params[:movie_id])
-    @favorite.delete
-    render json: { message: "Favorite removed"}
+    @favorite = current_user.favorites.find_by(movie_id: params[:movie_id])
+    if @favorite
+      @favorite.destroy
+      render json: { message: "Favorite removed"}
+    else 
+      render json: { message: "Favorite not found" }, status: :not_found
+    end
   end
 end
