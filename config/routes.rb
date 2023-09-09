@@ -10,5 +10,6 @@ Rails.application.routes.draw do
   post "/movies" => "movies#create"
 
   post "favorites" => "favorites#create"
+  delete "favorites" => "favorites#delete"
 end
 

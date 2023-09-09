@@ -9,4 +9,10 @@ class FavoritesController < ApplicationController
       render json: { errors: @favorite.errors.full_messages }
     end
   end
+
+  def delete
+    @favorite = current_user.favorites.where(movie_id: params[:movie_id])
+    @favorite.delete
+    render json: { message: "Favorite removed"}
+  end
 end
