@@ -2,14 +2,11 @@ class FavoritesController < ApplicationController
   before_action :authenticate_user
 
   def create
-    @favorite = Favorite.find_or_create_by(
-      user_id: current_user.id,
-      movie_id: params[:movie_id]
-    )
+    @favorite = current_user.favorites.build(movie_id: params[:movie_id])
     if @favorite.save
-      render json: @favorite
+      render json: @favorite, status: :created
     else
-      render json: { error: @favorite.errors.full_messages }, status: :bad_request
-    end    
+      render json: { errors: @favorite.errors.full_messages }
+    end
   end
 end
