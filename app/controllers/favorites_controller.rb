@@ -19,4 +19,9 @@ class FavoritesController < ApplicationController
       render json: { message: "Favorite not found" }, status: :not_found
     end
   end
+
+  def index
+    @favorites = current_user.favorites.all
+    render json: @favorites
+  end
 end

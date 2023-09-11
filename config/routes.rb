@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   get "/users/:id" => "users#show"
-  post "users" => "users#create"
-  patch "users/:id" => "users#update"
+  post "/users" => "users#create"
+  patch "/users/:id" => "users#update"
 
   post "/sessions" => "sessions#create"
 
@@ -9,7 +9,8 @@ Rails.application.routes.draw do
   get "/movies/:id" => "movies#show"
   post "/movies" => "movies#create"
 
-  post "favorites" => "favorites#create"
-  delete "favorites" => "favorites#delete"
+  get "/favorites" => "favorites#index"
+  post "/favorites" => "favorites#create"
+  delete "/favorites" => "favorites#delete"
 end
 
