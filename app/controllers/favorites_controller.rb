@@ -21,7 +21,7 @@ class FavoritesController < ApplicationController
   end
 
   def index
-    @favorites = Favorite.where(user_id: current_user.id)
-    render json: @favorites
+    @user_favorites = current_user.favorites.includes(:movie)
+    render json: @user_favorites, include: 'movie'
   end
 end
