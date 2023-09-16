@@ -1,7 +1,7 @@
 class MoviesController < ApplicationController
   before_action :authenticate_user, only: :toggle_favorite
   def index
-    @movies = Movie.all
+    @movies = Movie.order(name: :asc)
     render json: @movies
   end
 

@@ -21,7 +21,9 @@ class FavoritesController < ApplicationController
   end
 
   def index
-    @user_favorites = current_user.favorites.includes(:movie)
+    @user_favorites = current_user.favorites.includes(:movie).order('movies.name ASC')
+    puts @user_favorites.to_sql
     render json: @user_favorites, include: 'movie'
   end
+  
 end
