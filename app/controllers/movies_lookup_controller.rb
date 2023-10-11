@@ -1,0 +1,3 @@
+class MoviesLookupController < ApplicationController
+  
+end
