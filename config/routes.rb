@@ -7,7 +7,8 @@ Rails.application.routes.draw do
 
   post "/sessions" => "sessions#create"
 
-  get "/movies" => "movies#index"
+  # get "/movies" => "movies#index"
+  get "/movies" => "movies_lookup#index"
   get "/movies/:id" => "movies#show"
   post "/movies" => "movies#create"
 
