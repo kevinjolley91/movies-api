@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root "movies#index"
-  
+
   get "/users/:id" => "users#show"
   post "/users" => "users#create"
   patch "/users/:id" => "users#update"
@@ -16,4 +16,3 @@ Rails.application.routes.draw do
   post "/favorites" => "favorites#create"
   delete "/favorites" => "favorites#delete"
 end
-

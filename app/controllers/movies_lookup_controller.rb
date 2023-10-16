@@ -5,7 +5,7 @@ class MoviesLookupController < ApplicationController
     begin
       url = URI.parse("https://api.themoviedb.org/3/search/movie?query=John+Wick&api_key=#{ENV["MOVIE_API_KEY"]}")
       req = Net::HTTP::Get.new(url.to_s)
-      res = Net::HTTP.start(url.host, url.port, use_ssl: url.scheme == 'https') do |http|
+      res = Net::HTTP.start(url.host, url.port, use_ssl: url.scheme == "https") do |http|
         http.request(req)
       end
 
