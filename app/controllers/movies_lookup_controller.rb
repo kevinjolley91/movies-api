@@ -11,6 +11,7 @@ class MoviesLookupController < ApplicationController
 
       if res.is_a?(Net::HTTPSuccess)
         @movies = JSON.parse(res.body)
+        @movies["results"].sort_by! { |movie| movie["title"] }
         render json: @movies
       else
         render json: { error: "API request failed with status code: #{res.code}" }, status: :unprocessable_entity
