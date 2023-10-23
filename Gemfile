@@ -54,6 +54,7 @@ gem "jwt"
 gem "seed_dump"
 gem "themoviedb-api"
 gem "net-http"
+gem "pry"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

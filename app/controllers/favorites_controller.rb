@@ -1,8 +1,18 @@
+require "pry"
+
 class FavoritesController < ApplicationController
   before_action :authenticate_user
 
   def create
-    @favorite = current_user.favorites.build(movie_id: params[:movie_id])
+    binding.pry
+    Favorite.create!(
+      user_id: current_user.id,
+      movie_id: params[:movie_id],
+      # movie_title: params[:movie_title],
+      # movie_poster_path: params[:movie_poster_path],
+      # movie_overview: params[:movie_overview],
+      # movie_release_data: params[:movie_release_date],
+    )
     if @favorite.save
       render json: @favorite, status: :created
     else
@@ -14,16 +24,16 @@ class FavoritesController < ApplicationController
     @favorite = current_user.favorites.find_by(movie_id: params[:movie_id])
     if @favorite
       @favorite.destroy
-      render json: { message: "Favorite removed"}
-    else 
+      render json: { message: "Favorite removed" }
+    else
       render json: { message: "Favorite not found" }, status: :not_found
     end
   end
 
   def index
-    @user_favorites = current_user.favorites.includes(:movie).order('movies.name ASC')
+    @user_favorites = current_user.favorites
+    # .includes(:movie).order("movies.name ASC")
     puts @user_favorites.to_sql
-    render json: @user_favorites, include: 'movie'
+    render json: @user_favorites, include: "movie"
   end
-  
 end

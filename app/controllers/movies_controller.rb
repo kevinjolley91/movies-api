@@ -1,5 +1,6 @@
 class MoviesController < ApplicationController
-  before_action :authenticate_user, only: :toggle_favorite
+  before_action :authenticate_user
+  # , only: :toggle_favorite
   def index
     @movies = Movie.order(name: :asc)
     render json: @movies
