@@ -10,8 +10,8 @@ class FavoritesController < ApplicationController
       movie_id: params[:movie_id],
       movie_title: params[:movie_title],
       movie_poster_path: params[:movie_poster_path],
-      # movie_overview: params[:movie_overview],
-      # movie_release_data: params[:movie_release_date],
+      movie_overview: params[:movie_overview],
+      movie_release_date: params[:movie_release_date],
     )
     if @favorite.save
       render json: @favorite, status: :created
