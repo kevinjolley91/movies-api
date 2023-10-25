@@ -4,8 +4,8 @@ class FavoritesController < ApplicationController
   before_action :authenticate_user
 
   def create
-    binding.pry
-    Favorite.create!(
+    # binding.pry
+    @favorite = Favorite.create!(
       user_id: current_user.id,
       movie_id: params[:movie_id],
       # movie_title: params[:movie_title],
@@ -31,8 +31,7 @@ class FavoritesController < ApplicationController
   end
 
   def index
-    @user_favorites = current_user.favorites
-    # .includes(:movie).order("movies.name ASC")
+    @user_favorites = current_user.favorites.order("movie_title.name ASC")
     puts @user_favorites.to_sql
     render json: @user_favorites, include: "movie"
   end
