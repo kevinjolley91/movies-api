@@ -8,8 +8,8 @@ class FavoritesController < ApplicationController
     @favorite = Favorite.create!(
       user_id: current_user.id,
       movie_id: params[:movie_id],
-      # movie_title: params[:movie_title],
-      # movie_poster_path: params[:movie_poster_path],
+      movie_title: params[:movie_title],
+      movie_poster_path: params[:movie_poster_path],
       # movie_overview: params[:movie_overview],
       # movie_release_data: params[:movie_release_date],
     )
