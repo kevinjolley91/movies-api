@@ -31,8 +31,9 @@ class FavoritesController < ApplicationController
   end
 
   def index
-    @user_favorites = current_user.favorites.order("movie_title.name ASC")
+    # binding.pry
+    @user_favorites = Favorite.where(user_id: current_user.id)
     puts @user_favorites.to_sql
-    render json: @user_favorites, include: "movie"
+    render json: @user_favorites
   end
 end
