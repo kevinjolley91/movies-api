@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   # get "/movies" => "movies#index"
   get "/movies" => "movies_lookup#index"
+  get "/movies/search/:query" => "movies_lookup#search"
   get "/movies/:id" => "movies#show"
   post "/movies" => "movies#create"
 
