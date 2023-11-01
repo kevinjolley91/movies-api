@@ -23,6 +23,7 @@ class MoviesLookupController < ApplicationController
 
   def search
     query = params[:query]
+    Rails.logger.debug "Received query: #{query}"
     begin
       url = URI.parse("https://api.themoviedb.org/3/search/movie?query=#{query}&api_key=#{ENV["MOVIE_API_KEY"]}")
       req = Net::HTTP::Get.new(url.to_s)
