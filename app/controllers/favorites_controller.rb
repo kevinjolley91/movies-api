@@ -33,6 +33,7 @@ class FavoritesController < ApplicationController
   def index
     # binding.pry
     @user_favorites = Favorite.where(user_id: current_user.id)
+    @user_favorites.order!(:title)
     puts @user_favorites.to_sql
     render json: @user_favorites
   end
