@@ -8,10 +8,10 @@ class FavoritesController < ApplicationController
     @favorite = Favorite.create!(
       user_id: current_user.id,
       movie_id: params[:movie_id],
-      movie_title: params[:movie_title],
-      movie_poster_path: params[:movie_poster_path],
-      movie_overview: params[:movie_overview],
-      movie_release_date: params[:movie_release_date],
+      title: params[:title],
+      poster_path: params[:poster_path],
+      overview: params[:overview],
+      release_date: params[:release_date],
     )
     if @favorite.save
       render json: @favorite, status: :created
@@ -21,7 +21,7 @@ class FavoritesController < ApplicationController
   end
 
   def delete
-    @favorite = current_user.favorites.find_by(movie_id: params[:movie_id])
+    @favorite = current_user.favorites.find_by(id: params[:id])
     if @favorite
       @favorite.destroy
       render json: { message: "Favorite removed" }
