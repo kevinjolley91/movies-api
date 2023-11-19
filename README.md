@@ -1,3 +1,6 @@
-# README
+# What to Watch
 
-This backend is tied to a React frontend. I'm currently setting up a controller to make calls to the TMDb API for movies and movie info. I'm also working on a way for users to store their favorite movies.
+A Rails application that allows users to search for and save their favorite movies.
+
+## Dependencies
+[What to watch Frontend]([url](https://github.com/kevinjolley91/movies-frontend/tree/main)https://github.com/kevinjolley91/movies-frontend/tree/main)
